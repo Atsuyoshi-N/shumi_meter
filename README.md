@@ -10,7 +10,7 @@
 ### Clone this Repository
 ```
 $ git clone git@github.com:Atsuyoshi-N/shumi_meter.git
-$ cd hobby_management
+$ cd shumi_meter
 ```
 
 ### Check Ruby version
@@ -20,7 +20,7 @@ $ ruby -v
 ```
 unless your ruby version equals 2.4.1, please follow the next step.
 ```
-$ rbnev install 2.4.1
+$ rbenv install 2.4.1
 $ rbenv local 2.4.1
 $ rbenv rehash
 $ gem install bundler
