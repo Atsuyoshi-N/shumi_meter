@@ -41,6 +41,7 @@ $ gem install rails -v 5.1.4
 ```
 $ bundle install
 $ rails db:create
+$ rails db:migrate
 ```
 
 
