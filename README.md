@@ -1,9 +1,9 @@
-# hobby_management
+# shumi_meter
 * Ruby version
 ` Ruby 2.4.1 `
 
 * Rails version
-  Rails 5.1.4
+`  Rails 5.1.4 `
 
 ## Setup
 
