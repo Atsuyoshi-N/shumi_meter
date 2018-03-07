@@ -9,7 +9,7 @@
 
 ### Clone this Repository
 ```
-$ git clone git@github.com:Atsuyoshi-N/hobby_management.git
+$ git clone git@github.com:Atsuyoshi-N/shumi_meter.git
 $ cd hobby_management
 ```
 
