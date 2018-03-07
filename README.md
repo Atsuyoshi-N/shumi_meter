@@ -1,24 +1,49 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
+# hobby_management
 * Ruby version
+` Ruby 2.4.1 `
 
-* System dependencies
+* Rails version
+  Rails 5.1.4
 
-* Configuration
+## Setup
 
-* Database creation
+### Clone this Repository
+```
+$ git clone git@github.com:Atsuyoshi-N/hobby_management.git
+$ cd hobby_management
+```
 
-* Database initialization
+### Check Ruby version
+This Repository uses `Ruby 2.4.1`. So, please check your ruby version.
+```
+$ ruby -v
+```
+unless your ruby version equals 2.4.1, please follow the next step.
+```
+$ rbnev install 2.4.1
+$ rbenv local 2.4.1
+$ rbenv rehash
+$ gem install bundler
+```
+this command may take a while...
 
-* How to run the test suite
+### Check Rails version
+Also, this Repository requires `Rails 5.1.4`
+```
+$ rails -v
+```
+unless returned rails version equals 5.1.4, please follow the next step
+```
+$ gem install rails -v 5.1.4
+```
 
-* Services (job queues, cache servers, search engines, etc.)
+### Database setup
+```
+$ bundle install
+$ rails db:create
+$ rails db:migrate
+$ rails db:seed
+```
 
-* Deployment instructions
 
-* ...
+
