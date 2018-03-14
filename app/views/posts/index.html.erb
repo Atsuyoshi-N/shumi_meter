@@ -1,1 +1,31 @@
-<p>hello hackers!</p>
+<tabel>
+<tbody>
+<div class="row">
+    <div class="container col-4">
+        <div class="card border-dark mb-3" style="max-width: 18rem;">
+            <div class="card-body">
+                <div class="card-title">
+                    <%= @post.tag %>
+                </div>
+                <% @tag.each do |t| %>
+                    <h5 class="card-text">
+                        <%= t.label %>
+                    </h5>
+                    <p class="card-text">
+                        <% if t.datatype == "text_contents" then %>
+                            <%= TextContent.find_by(label: t.label).content %>
+                        <% elsif t.datatype == "textarea_contents" then %>
+                            <%= TextareaContent.find_by(label: t.label).content %>
+                        <% elsif t.datatype == "date_contents" then %>
+                            <%= DateContent.find_by(label: t.label).content %>
+                        <% else %>
+                            else
+                        <% end %>
+                    </p>
+                <% end %>
+            </div>
+        </div>
+    </div>
+</div>
+</tbody>
+</tabel>    
