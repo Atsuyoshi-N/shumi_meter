@@ -18,9 +18,25 @@ Post.create(
 )
 
 TagManagement.create!(
-                      user_id:     1,
-                      tag:         '映画',
-                      label:       '公開日',
-                      order:       '1',
-                      datatype:    Time.now
+                        user_id:     1,
+                        tag:         '映画',
+                        label:       '公開日',
+                        order:       '1',
+                        datatype:    'date_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         '映画',
+                        label:       'タイトル',
+                        order:       '2',
+                        datatype:    'text_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         '映画',
+                        label:       'コメント',
+                        order:       '3',
+                        datatype:    'textarea_contents'
 )
