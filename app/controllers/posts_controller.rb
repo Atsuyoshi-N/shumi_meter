@@ -6,9 +6,12 @@ class PostsController < ApplicationController
   end
 
   def new
+    @tag_name = '映画'
+    @tag = TagManagement.where(tag: @tag_name).order(:order)
   end
 
   def create
+    redirect_to posts_path
   end
 
   def show

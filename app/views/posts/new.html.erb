@@ -1,1 +1,18 @@
-<p>hello new action</p>
+<h3>
+    <%= @tag_name %>
+</h3>
+<%= form_tag '/posts' do %>
+    <% @tag.each do |t| %>
+        <h5> <%= t.label %> </h5>
+        <% if t.datatype == "text_contents" then %>
+            <%= text_field_tag  t.label %>
+        <% elsif t.datatype == "textarea_contents" then %>
+            <%= text_area_tag  t.label %>
+        <% elsif t.datatype == "date_contents" then %>
+            <%= date_field_tag  t.label %>
+        <% else %>
+            else
+        <% end %>
+    <% end %>
+    <%= submit_tag "add" %>
+<% end %>
