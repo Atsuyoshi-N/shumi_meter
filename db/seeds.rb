@@ -11,3 +11,16 @@ User.create!(
             email:                 'test@example.com',
             password:              'password',
             password_confirmation: 'password')
+
+Post.create(
+            user_id:               1,
+            tag:                   '映画'
+)
+
+TagManagement.create!(
+                      user_id:     1,
+                      tag:         '映画',
+                      label:       '公開日',
+                      order:       '1',
+                      datatype:    Time.now
+)
