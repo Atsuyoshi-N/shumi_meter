@@ -1,4 +1,5 @@
 class PostsController < ApplicationController
+  before_action :set_post, only: [:index, :show, :edit, :update]
 
   def index
   end
@@ -19,6 +20,11 @@ class PostsController < ApplicationController
   end
 
   def destory
+  end
+
+  private
+  def set_post
+    @post = Post.find(params[:id])
   end
 
 end
