@@ -11,3 +11,32 @@ User.create!(
             email:                 'test@example.com',
             password:              'password',
             password_confirmation: 'password')
+
+Post.create(
+            user_id:               1,
+            tag:                   '映画'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         '映画',
+                        label:       '公開日',
+                        order:       '1',
+                        datatype:    'date_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         '映画',
+                        label:       'タイトル',
+                        order:       '2',
+                        datatype:    'text_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         '映画',
+                        label:       'コメント',
+                        order:       '3',
+                        datatype:    'textarea_contents'
+)
