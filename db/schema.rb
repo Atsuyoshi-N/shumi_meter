@@ -15,7 +15,7 @@ ActiveRecord::Schema.define(version: 20180314032451) do
   create_table "date_contents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.bigint "post_id"
     t.string "label"
-    t.datetime "contents"
+    t.datetime "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_date_contents_on_post_id"
@@ -41,8 +41,12 @@ ActiveRecord::Schema.define(version: 20180314032451) do
   end
 
   create_table "text_contents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.bigint "post_id"
+    t.string "label"
+    t.string "content"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_text_contents_on_post_id"
   end
 
   create_table "textarea_contents", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|

@@ -1,7 +1,8 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update]
+  before_action :set_post, only: [:index, :show, :edit, :update]
 
   def index
+    @tag = TagManagement.where(tag: @post.tag).order(:order)
   end
 
   def new
@@ -24,7 +25,7 @@ class PostsController < ApplicationController
 
   private
   def set_post
-    @post = Post.find(params[:id])
+    @post = Post.find(1)
   end
 
 end
