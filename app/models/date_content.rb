@@ -1,0 +1,2 @@
+class DateContent < ApplicationRecord
+end
