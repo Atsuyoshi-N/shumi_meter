@@ -11,6 +11,7 @@ class PostsController < ApplicationController
   end
 
   def create
+    binding.pry
     redirect_to posts_path
   end
 
@@ -29,6 +30,10 @@ class PostsController < ApplicationController
   private
   def set_post
     @post = Post.find(1)
+  end
+
+  def post_params
+    params.permit(:tag, :user_id)
   end
 
 end
