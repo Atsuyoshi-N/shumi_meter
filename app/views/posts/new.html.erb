@@ -4,7 +4,7 @@
 <%= form_tag '/posts' do %>
   <%= hidden_field_tag :user_id, User.find(1).id %>
   <%= hidden_field_tag :tag, @tag_name %>
-    <% @tag.each do |t| %>
+    <% @tags.each do |t| %>
         <h5> <%= t.label %> </h5>
         <% if t.datatype == "text_contents" then %>
             <%= text_field_tag  t.label %>
