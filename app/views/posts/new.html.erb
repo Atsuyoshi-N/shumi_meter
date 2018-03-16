@@ -1,30 +1,6 @@
 <h3>
     <%= @tag_name %>
 </h3>
-<%= form_tag '/posts' do %>
-  <%= hidden_field_tag :user_id, User.find(1).id %>
-  <%= hidden_field_tag :tag, @tag_name %>
-    <% @tags.each do |t| %>
-        <h5> <%= t.label %> </h5>
-        <% if t.datatype == "text_contents" then %>
-            <%= text_field_tag  t.label %>
-            <%= hidden_field_tag :label, t.label %>
-        <% elsif t.datatype == "textarea_contents" then %>
-            <%= text_area_tag  t.label %>
-            <%= hidden_field_tag :label, t.label %>
-        <% elsif t.datatype == "date_contents" then %>
-            <%= date_field_tag  t.label %>
-            <%= hidden_field_tag :label, t.label %>
-        <% else %>
-            else
-        <% end %>
-    <% end %>
-    <%= submit_tag "add" %>
-<% end %>
-
-<h3>
-    <%= @tag_name %>
-</h3>
 <%= form_for @post do |f| %>
   <%= f.hidden_field :user_id, value: User.find(1).id %>
   <%= f.hidden_field :tag, value: @tag_name %>
@@ -32,8 +8,10 @@
   <% @tags.each do |t| %>
     <h5> <%= t.label %> </h5>
     <% if t.datatype == "text_contents" then %>
-      <%= text_field_tag  t.label %>
-      <%= f.hidden_field :label,value: t.label %>
+      <%= f.fields_for :text_contents, @post.text_contents.build, multiple: true do |text_contents_form| %>
+        <%= text_contents_form.text_field :content %>
+        <%= text_contents_form.hidden_field :label,value: t.label %>
+      <% end %>
     <% elsif t.datatype == "textarea_contents" then %>
       <%= text_area_tag  t.label %>
       <%= f.hidden_field :label,value: t.label %>
@@ -44,6 +22,6 @@
       else
     <% end %>
   <% end %>
-  <%= submit_tag "add" %>
+  <%= f.submit "add" %>
 
 <% end %>

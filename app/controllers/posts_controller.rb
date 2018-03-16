@@ -11,16 +11,10 @@ class PostsController < ApplicationController
   end
 
   def create
-    post = Post.new(post_params)
-    if post.save
-      text_contents = TextContent.new(content: text_contents_params["タイトル"], label: text_contents_params["label"], post_id: post.id)
-      binding.pry
-      if text_contents.save
-        redirect_to posts_path
-      else
-        p text_contents.errors.full_messages
-        redirect_to new_post_path
-      end
+    @post = Post.new(post_params)
+    @text_contents = @post.text_contents.build
+    if @post.save
+      redirect_to root_path
     else
       render 'new'
     end
@@ -49,11 +43,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.permit(:tag, :user_id)
-  end
-
-  def text_contents_params
-    params.permit("タイトル".to_sym)
+    params.require(:post).permit(:tag, :user_id, text_contents_attributes: [:content, :label])
   end
 
 end
