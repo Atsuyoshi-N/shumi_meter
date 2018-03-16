@@ -8,13 +8,42 @@
         <h5> <%= t.label %> </h5>
         <% if t.datatype == "text_contents" then %>
             <%= text_field_tag  t.label %>
+            <%= hidden_field_tag :label, t.label %>
         <% elsif t.datatype == "textarea_contents" then %>
             <%= text_area_tag  t.label %>
+            <%= hidden_field_tag :label, t.label %>
         <% elsif t.datatype == "date_contents" then %>
             <%= date_field_tag  t.label %>
+            <%= hidden_field_tag :label, t.label %>
         <% else %>
             else
         <% end %>
     <% end %>
     <%= submit_tag "add" %>
+<% end %>
+
+<h3>
+    <%= @tag_name %>
+</h3>
+<%= form_for @post do |f| %>
+  <%= f.hidden_field :user_id, value: User.find(1).id %>
+  <%= f.hidden_field :tag, value: @tag_name %>
+
+  <% @tags.each do |t| %>
+    <h5> <%= t.label %> </h5>
+    <% if t.datatype == "text_contents" then %>
+      <%= text_field_tag  t.label %>
+      <%= f.hidden_field :label,value: t.label %>
+    <% elsif t.datatype == "textarea_contents" then %>
+      <%= text_area_tag  t.label %>
+      <%= f.hidden_field :label,value: t.label %>
+    <% elsif t.datatype == "date_contents" then %>
+      <%= date_field_tag  t.label %>
+      <%= f.hidden_field :label,value: t.label %>
+    <% else %>
+      else
+    <% end %>
+  <% end %>
+  <%= submit_tag "add" %>
+
 <% end %>

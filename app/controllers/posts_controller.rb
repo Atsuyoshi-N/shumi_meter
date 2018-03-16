@@ -7,12 +7,14 @@ class PostsController < ApplicationController
   end
 
   def new
+    @post = Post.new
   end
 
   def create
     post = Post.new(post_params)
     if post.save
-      text_contents = TextContent.new(content: text_contents_params["タイトル"], post_id: post.id)
+      text_contents = TextContent.new(content: text_contents_params["タイトル"], label: text_contents_params["label"], post_id: post.id)
+      binding.pry
       if text_contents.save
         redirect_to posts_path
       else
