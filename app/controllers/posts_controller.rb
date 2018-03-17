@@ -12,7 +12,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @text_contents = @post.text_contents.build
     if @post.save
       redirect_to root_path
     else
@@ -43,7 +42,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:tag, :user_id, text_contents_attributes: [:content, :label])
+    params.require(:post).permit(:tag, :user_id, text_contents_attributes: [:content, :label], textarea_contents_attributes: [:content, :label], date_contents_attributes: [:content, :label])
   end
 
 end
