@@ -15,8 +15,9 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     if @post.save
-      redirect_to root_path
+      redirect_to root_path, notice: "保存に成功しました。"
     else
+      flash.now[:alert] = "保存に成功しました"
       render 'new'
     end
   end
