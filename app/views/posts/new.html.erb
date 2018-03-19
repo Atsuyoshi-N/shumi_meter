@@ -1,18 +1,23 @@
 <h3>
     <%= @tag_name %>
 </h3>
-<%= form_tag '/posts' do %>
+<div class="container">
+<div class="row">
+<div class="col-xs-2">
+<%= bootstrap_form_tag url: '/posts' do |f| %>
     <% @tag.each do |t| %>
-        <h5> <%= t.label %> </h5>
         <% if t.datatype == "text_contents" then %>
-            <%= text_field_tag  t.label %>
+            <%= f.text_field  t.label %>
         <% elsif t.datatype == "textarea_contents" then %>
-            <%= text_area_tag  t.label %>
+            <%= f.text_area  t.label %>
         <% elsif t.datatype == "date_contents" then %>
-            <%= date_field_tag  t.label %>
+            <%= f.date_field  t.label %>
         <% else %>
             else
         <% end %>
     <% end %>
-    <%= submit_tag "add" %>
+    <%= f.submit "登録" %>
 <% end %>
+</div>
+</div>
+</div>
