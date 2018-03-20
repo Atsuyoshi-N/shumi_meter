@@ -1,32 +1,35 @@
+<%= link_to '新規投稿画面', new_post_path %>
 <tabel>
 <tbody>
+<% @data.each do |post| %>
 <div class="row">
     <div class="container col-4">
         <div class="card border-dark mb-3" style="max-width: 18rem;">
             <div class="card-body">
-                <div class="card-title">
-                    <%= @post.tag %>
-                </div>
-                <% @tag.each do |t| %>
+                <% post["data"].each do |t| %>
                     <h5 class="card-text">
-                        <%= t.label %>
+                        <%= t["label"] %>
                     </h5>
                     <p class="card-text">
-                        <% if t.datatype == "text_contents" then %>
-                            <%= TextContent.find_by(label: t.label).content %>
-                        <% elsif t.datatype == "textarea_contents" then %>
-                            <%= TextareaContent.find_by(label: t.label).content %>
-                        <% elsif t.datatype == "date_contents" then %>
-                            <%= DateContent.find_by(label: t.label).content %>
+                        <% if t["datatype"] == "text_contents" then %>
+                            <%= t["content"] %>
+                        <% elsif t["datatype"] == "textarea_contents" then %>
+                            <%= t["content"] %>                            
+                        <% elsif t["datatype"] == "date_contents" then %>
+                            <%= t["content"] %>
                         <% else %>
                             else
                         <% end %>
                     </p>
                 <% end %>
+                <div class="card-title">
+                        <%= "タグ : #{post["tag"]}" %>
+                </div>
             </div>
         </div>
     </div>
 </div>
+<% end %>
 </tbody>
 </tabel>    
-<%= link_to '新規投稿画面', new_post_path %>
+
