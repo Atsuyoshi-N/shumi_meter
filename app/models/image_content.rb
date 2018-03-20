@@ -1,5 +1,5 @@
 class ImageContent < ApplicationRecord
   belongs_to :post
 
-  mount_uploader :image, ImageUploader
+  mount_uploader :content, ImageUploader
 end

@@ -4,6 +4,8 @@ class PostsController < ApplicationController
 
   def index
     @tag = TagManagement.where(tag: @post.tag).order(:order)
+    # 下の記述は画像が表示されるかの確認のために一時的に追加した。
+    # @image = Post.find(8)
   end
 
   def new
