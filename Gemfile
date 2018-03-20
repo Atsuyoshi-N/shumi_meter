@@ -63,3 +63,8 @@ gem 'pry-rails'
 # upload image
 gem 'carrierwave'
 gem 'mini_magick'
+
+# flash
+gem 'toastr-rails'
+
+gem 'jquery-rails'
