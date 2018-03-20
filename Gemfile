@@ -59,3 +59,7 @@ gem 'devise'
 
 # for debugging
 gem 'pry-rails'
+
+# upload image
+gem 'carrierwave'
+gem 'mini_magick'
