@@ -1,1 +1,4 @@
-<p>hello edit actions</p>
+<h3>
+    <%= @tag_name %>
+</h3>
+<%= render partial: 'posts/form', locals: { post: @post, tags: @tags, tag_name: @tag_name } %>
