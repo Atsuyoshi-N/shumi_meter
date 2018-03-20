@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to root_path, notice: "保存に成功しました。"
     else
-      flash.now[:alert] = "保存に成功しました"
+      flash.now[:alert] = "保存に失敗しました"
       render 'new'
     end
   end
