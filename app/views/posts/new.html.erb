@@ -1,36 +1,4 @@
 <h3>
     <%= @tag_name %>
 </h3>
-<%= form_for @post do |f| %>
-  <%= f.hidden_field :user_id, value: User.find(1).id %>
-  <%= f.hidden_field :tag, value: @tag_name %>
-
-  <% @tags.each do |t| %>
-    <h5> <%= t.label %> </h5>
-    <% if t.datatype == "text_contents" then %>
-      <%= f.fields_for :text_contents, @post.text_contents.build do |text_contents_form| %>
-        <%= text_contents_form.text_field :content %>
-        <%= text_contents_form.hidden_field :label,value: t.label %>
-      <% end %>
-    <% elsif t.datatype == "textarea_contents" then %>
-      <%= f.fields_for :textarea_contents, @post.textarea_contents.build do |textarea_contents_form| %>
-        <%= textarea_contents_form.text_area :content %>
-        <%= textarea_contents_form.hidden_field :label,value: t.label %>
-      <% end %>
-    <% elsif t.datatype == "date_contents" then %>
-      <%= f.fields_for :date_contents, @post.date_contents.build do |date_contents_form| %>
-        <%= date_contents_form.date_field :content %>
-        <%= date_contents_form.hidden_field :label,value: t.label %>
-      <% end %>
-    <% elsif t.datatype == "image_contents" then %>
-      <%= f.fields_for :image_contents, @post.image_contents.build do |image_contents_form| %>
-        <%= image_contents_form.file_field :content %>
-        <%= image_contents_form.hidden_field :label,value: t.label %>
-      <% end %>
-    <% else %>
-      else
-    <% end %>
-  <% end %>
-  <%= f.submit "add" %>
-
-<% end %>
+<%= render partial: 'posts/form', locals: { post: @post, tags: @tags, tag_name: @tag_name } %>
