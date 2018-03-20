@@ -1,15 +1,23 @@
-<%= link_to '新規投稿画面', new_post_path %>
+
 <tabel>
 <tbody>
+<!-- <div class="row">
+    <div class="container col-4">
+        <%= link_to '新規投稿画面', new_post_path %>
+    </div>
+</div>         -->
 <% @data.each do |post| %>
 <div class="row">
-    <div class="container col-4">
-        <div class="card border-dark mb-3" style="max-width: 18rem;">
+    <div class="container col-8">
+        <div class="card border-dark mb-3 w-75">
+            <div class="card-header">
+                <%= "タグ : #{post["tag"]}" %>
+            </div>            
             <div class="card-body">
                 <% post["data"].each do |t| %>
-                    <h5 class="card-text">
+                    <div class="card-text">
                         <%= t["label"] %>
-                    </h5>
+                    </div>
                     <p class="card-text">
                         <% if t["datatype"] == "text_contents" then %>
                             <%= t["content"] %>
@@ -22,9 +30,6 @@
                         <% end %>
                     </p>
                 <% end %>
-                <div class="card-title">
-                        <%= "タグ : #{post["tag"]}" %>
-                </div>
             </div>
         </div>
     </div>
