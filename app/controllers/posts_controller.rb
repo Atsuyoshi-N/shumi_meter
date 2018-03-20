@@ -4,6 +4,8 @@ class PostsController < ApplicationController
 
   def index
     @tag = TagManagement.where(tag: @post.tag).order(:order)
+    # 下の記述は画像が表示されるかの確認のために一時的に追加した。
+    # @image = Post.find(8)
   end
 
   def new
@@ -42,7 +44,7 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:tag, :user_id, text_contents_attributes: [:content, :label], textarea_contents_attributes: [:content, :label], date_contents_attributes: [:content, :label])
+    params.require(:post).permit(:tag, :user_id, text_contents_attributes: [:content, :label], textarea_contents_attributes: [:content, :label], date_contents_attributes: [:content, :label], image_contents_attributes: [:content, :label])
   end
 
 end

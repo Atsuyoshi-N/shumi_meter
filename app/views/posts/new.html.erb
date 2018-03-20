@@ -22,6 +22,11 @@
         <%= date_contents_form.date_field :content %>
         <%= date_contents_form.hidden_field :label,value: t.label %>
       <% end %>
+    <% elsif t.datatype == "image_contents" then %>
+      <%= f.fields_for :image_contents, @post.image_contents.build do |image_contents_form| %>
+        <%= image_contents_form.file_field :content %>
+        <%= image_contents_form.hidden_field :label,value: t.label %>
+      <% end %>
     <% else %>
       else
     <% end %>
