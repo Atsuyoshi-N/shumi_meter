@@ -2,6 +2,7 @@
 @import "rails_bootstrap_forms";
 body {
     font-size: .875rem; // margin : 0 1em 0 1em ;
+    overflow: hidden;
 }
 
 .feather {
@@ -28,10 +29,10 @@ body {
 
 .sidebar-sticky {
     position: -webkit-sticky;
-    position: sticky;
-    top: 48px;
+    // position: sticky;
+    // top: 48px;
     /* Height of navbar */
-    height: calc(100vh - 48px);
+    // height: calc(100vh - 48px);
     padding-top: .5rem;
     overflow-x: hidden;
     overflow-y: auto;
@@ -112,24 +113,42 @@ body {
 .main {
     // position: fixed;
     margin-top: 10px;
+    // overscroll-behavior: none;
 }
 
-.live__scroll {
+.tag-columns {
     overflow-x: auto;
     overflow-y: hidden;
     white-space: nowrap;
+    text-align: center;
+    // margin-bottom: 2px;
 }
 
-.live__scroll .row {
+.tag-columns .row {
     display: block;
-    overflow-y: scroll;
+    overflow-y: hidden;
+    padding: 1px;
+    margin: 0px;
 }
 
-.live__scroll .live__scroll--box {
+.tag-columns .tag-column-box {
     display: inline-block; // vertical-align: top;
     float: none;
-    padding: 15px;
-    border: 1px solid red;
-    height: calc(100vh - 48px);
+    padding: 1px;
+    // border: 1px solid red;
+    // height: calc(100vh - 48px);
+    height: 100%;
+    overflow: hidden;
+}
+
+.tag-columns .tag-column-box .tag-column-box-header {
+    // overflow-y: scroll;
+    font-size: 1.5rem;
+    height: 2.5rem;
+    border: 1px solid black;
+}
+
+.tag-columns .tag-column-box .tag-column-box-body {
     overflow-y: scroll;
+    height: calc(100vh - 48px - 68px);
 }
