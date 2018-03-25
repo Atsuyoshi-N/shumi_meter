@@ -54,6 +54,22 @@ DateContent.create!(
                         content:    DateTime.new(2009, 12, 10)
 )
 
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         'music',
+                        label:       'タイトル',
+                        order:       '1',
+                        datatype:    'text_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         'music',
+                        label:       'artist',
+                        order:       '2',
+                        datatype:    'text_contents'
+)
+
 TextareaContent.create!(
                         post_id:    1,
                         label:      'コメント',
