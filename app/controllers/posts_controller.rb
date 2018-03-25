@@ -4,9 +4,10 @@ class PostsController < ApplicationController
 
   def index
     @tag = TagManagement.where(tag: @post.tag).order(:order)
+    @data = formalize_posts(Post.all)
     # 下の記述は画像が表示されるかの確認のために一時的に追加した。
     # @image = Post.find(8)
-  end
+
 
   def new
     @post = Post.new
@@ -37,7 +38,7 @@ class PostsController < ApplicationController
 
   private
   def set_post
-    @post = Post.find(1)
+    @post = Post.find(1)  
   end
 
   def set_tags
@@ -47,6 +48,34 @@ class PostsController < ApplicationController
 
   def post_params
     params.require(:post).permit(:tag, :user_id, text_contents_attributes: [:content, :label], textarea_contents_attributes: [:content, :label], date_contents_attributes: [:content, :label], image_contents_attributes: [:content, :label])
+  end
+
+  def formalize_post(p)
+    tags = TagManagement.where(tag: @tag_name).order(:order)
+    data = []
+    tags.each do |t|
+      if t.datatype == "text_contents" then 
+        cont = TextContent.find_by(post_id: p.id, label: t.label)
+        data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content})
+      elsif t.datatype == "textarea_contents" then
+        cont = TextareaContent.find_by(post_id: p.id, label: t.label)
+        data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content})
+      elsif t.datatype == "date_contents" then
+        cont = DateContent.find_by(post_id: p.id, label: t.label)
+        data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content})
+      else
+        fail
+      end
+    end
+    return {"tag" => p.tag, "data" => data}
+  end
+
+  def formalize_posts(n)
+    data = []
+    n.each do |p|
+      data.push(formalize_post (p))
+    end
+    return data
   end
 
 end

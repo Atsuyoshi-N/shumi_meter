@@ -1,22 +1,50 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>HobbyManagement</title>
-    <%= csrf_meta_tags %>
 
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-  </head>
+<head>
+  <title>HobbyManagement</title>
+  <%= csrf_meta_tags %>
 
-  <body>
-    <% unless flash.empty? %>
-      <script type="text/javascript">
-        <% flash.each do |key, value| %>
-          <% type = key.to_s.gsub('alert','error').gsub('notice','info') %>
-          toastr['<%=type %>']('<%=value %>');
-        <% end %>
-      </script>
-    <% end %>
-  <%= yield %>
-  </body>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+</head>
+
+<body>
+  <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+    <!-- <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">趣味メーター</a> -->
+    <%= link_to '趣味メーター', root_path, { :class=>"navbar-brand col-sm-3 col-md-2 mr-0" } %>
+    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
+    <ul class="navbar-nav px-3">
+      <li class="nav-item text-nowrap">
+        <a class="nav-link" href="#">Sign out</a>
+      </li>
+    </ul>
+  </nav>
+  <div class="container-fluid" style="overflow-y:hidden;">
+    <div class="row">
+      <div class="col-md-2 sidebar">
+        <div class="sidebar-sticky">
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <%= link_to '新規投稿画面', new_post_path, { :class=>"nav-link" } %>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <% unless flash.empty? %>
+        <script type="text/javascript">
+          <% flash.each do |key, value| %>
+            <% type = key.to_s.gsub('alert','error').gsub('notice','info') %>
+            toastr['<%=type %>']('<%=value %>');
+          <% end %>
+        </script>
+      <% end %>
+      <div class="col-md-offset-2 col-md-10 main">
+        <%= yield %>
+      </div>
+    </div>
+  </div>
+</body>
+
 </html>
+>>>>>>> frontend
