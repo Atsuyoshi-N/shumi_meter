@@ -1,2 +1,38 @@
-<h1>TagManagements#new</h1>
-<p>Find me in app/views/tag_managements/new.html.erb</p>
+<%= form_for(@form, url: tag_managements_path, method: :post) do |fb| %>
+  <table class="table">
+    <thead>
+      <tr>
+        <th width="60px"> 登録</th>
+        <th>タグ</th>
+        <th>ラベル</th>
+        <th>順番</th>
+        <th>データ型</th>
+      </tr>
+    </thead>
+    <tbody class="bulk-registration-form">
+      <%= fb.fields_for :tag_managements do |f| %>
+        <tr class="item">
+          <td class="text-center">
+            <%= f.check_box :register, class: 'top10 registration-checkbox' %>
+          </td>
+          <%= f.hidden_field :user_id, value: User.find(1).id %>
+          <td>
+            <%= f.text_field :tag, class: 'form-control' %>
+          </td>
+          <td>
+            <%= f.text_field :label, class: 'form-control' %>
+          </td>
+          <td>
+            <%= f.text_field :order, class: 'form-control' %>
+          </td>
+          <td>
+            <%= f.text_field :datatype, class: 'form-control' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <div class="text-center">
+    <%= fb.submit '一括登録', class: 'btn btn-primary' %>
+  </div>
+<% end %>
