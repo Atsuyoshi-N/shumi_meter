@@ -52,7 +52,7 @@ class PostsController < ApplicationController
   end
 
   def formalize_post(p)
-    tags = TagManagement.where(tag: @tag_name).order(:order)
+    tags = TagManagement.where(tag: @tag_name, user_id: current_user).order(:order)
     data = []
     tags.each do |t|
       if t.datatype == "text_contents" then 
