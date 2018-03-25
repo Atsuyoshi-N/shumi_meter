@@ -1,12 +1,13 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:index, :show, :edit, :update]
-  before_action :set_tags, only: [:new, :create, :edit, :update]
+  before_action :set_tags, only: [:new, :create, :edit, :update, :index]
 
   def index
     @tag = TagManagement.where(tag: @post.tag).order(:order)
     @data = formalize_posts(Post.all)
     # 下の記述は画像が表示されるかの確認のために一時的に追加した。
     # @image = Post.find(8)
+  end
 
 
   def new
@@ -77,6 +78,5 @@ class PostsController < ApplicationController
     end
     return data
   end
-
 end
 
