@@ -1,16 +1,17 @@
 
 <div class="tag-columns">
   <div class="row">
-    <% [@data * 5, @data * 10, @data * 3, @data * 7, @data].each do |dd| %>
+    <% @data.each do |dd| %>
+      <%if dd["post_list"].length != 0 %>
       <div class="col-3 tag-column-box">
         <div class="tag-column-box-header">
-          <%= "タグ : tag" %>
+          <%= dd["tag_name"] %>
         </div>
         <div class="tag-column-box-body">
-          <% dd.each do |post| %>
+          <% dd["post_list"].each do |post| %>
             <div class="card border-dark">
               <div class="card-body">
-                <% post["data"].each do |t| %>
+                <% post.each do |t| %>
                   <div class="card-text">
                     <%= t["label"] %>
                   </div>
@@ -31,6 +32,7 @@
           <% end %>
         </div>
       </div>
+      <% end %>
     <% end %>
   </div>
 </div>
