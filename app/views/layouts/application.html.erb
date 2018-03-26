@@ -7,9 +7,19 @@
 
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.css">
+  <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap-theme.css">
 </head>
 
 <body>
+  <% unless flash.empty? %>
+    <script type="text/javascript">
+      <% flash.each do |key, value| %>
+    <% type = key.to_s.gsub('alert','error').gsub('notice','info') %>
+  toastr['<%=type %>']('<%=value %>');
+          <% end %>
+    </script>
+  <% end %>
   <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
     <!-- <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">趣味メーター</a> -->
     <%= link_to '趣味メーター', root_path, { :class=>"navbar-brand col-sm-3 col-md-2 mr-0" } %>
@@ -25,28 +35,7 @@
     </ul>
   </nav>
   <div class="container-fluid" style="overflow-y:hidden;">
-    <div class="row">
-      <div class="col-md-2 sidebar">
-        <div class="sidebar-sticky">
-          <ul class="nav flex-column">
-            <li class="nav-item">
-              <%= link_to '新規投稿画面', new_post_path, { :class=>"nav-link" } %>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <% unless flash.empty? %>
-        <script type="text/javascript">
-          <% flash.each do |key, value| %>
-            <% type = key.to_s.gsub('alert','error').gsub('notice','info') %>
-            toastr['<%=type %>']('<%=value %>');
-          <% end %>
-        </script>
-      <% end %>
-      <div class="col-md-offset-2 col-md-10 main">
-        <%= yield %>
-      </div>
-    </div>
+    <%= yield %>
   </div>
 </body>
 

@@ -1,38 +1,41 @@
-
-<div class="tag-columns">
-  <div class="row">
-    <% @data.each do |dd| %>
-      <%if dd["post_list"].length != 0 %>
-      <div class="col-3 tag-column-box">
-        <div class="tag-column-box-header">
-          <%= dd["tag_name"] %>
-        </div>
-        <div class="tag-column-box-body">
-          <% dd["post_list"].each do |post| %>
-            <div class="card border-dark">
-              <div class="card-body">
-                <% post.each do |t| %>
-                  <div class="card-text">
-                    <%= t["label"] %>
-                  </div>
-                  <p class="card-text">
-                    <% if t["datatype"] == "text_contents" then %>
-                      <%= t["content"] %>
-                    <% elsif t["datatype"] == "textarea_contents" then %>
-                      <%= t["content"] %>
-                    <% elsif t["datatype"] == "date_contents" then %>
-                      <%= t["content"] %>
-                    <% else %>
-                      else
-                    <% end %>
-                  </p>
-                <% end %>
+<%= render 'layouts/sidebar' %>
+<div class="row">
+  <div class="col-md-offset-2 col-md-10 main">
+    <div class="tag-columns">
+      <div class="row">
+        <% @data.each do |dd| %>
+          <%if dd["post_list"].length != 0 %>
+            <div class="col-3 tag-column-box">
+              <div class="tag-column-box-header">
+                <%= dd["tag_name"] %>
               </div>
+              <div class="tag-column-box-body">
+                <% dd["post_list"].each do |post| %>
+                  <div class="card border-dark">
+                    <div class="card-body">
+                      <% post.each do |t| %>
+                        <div class="card-text">
+                          <%= t["label"] %>
+                        <p class="card-text">
+                          <% if t["datatype"] == "text_contents" then %>
+                            <%= t["content"] %>
+                          <% elsif t["datatype"] == "textarea_contents" then %>
+                            <%= t["content"] %>
+                          <% elsif t["datatype"] == "date_contents" then %>
+                            <%= t["content"] %>
+                          <% else %>
+                            else
+                          <% end %>
+                        </p>
+                      </div>
+                    <% end %>
+                  </div>
+                </div>
+              <% end %>
             </div>
           <% end %>
-        </div>
+        <% end %>
       </div>
-      <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
