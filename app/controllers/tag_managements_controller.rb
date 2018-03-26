@@ -6,7 +6,7 @@ class TagManagementsController < ApplicationController
   def create
     @form = Form::TagManagementCollection.new(tag_management_collection_params)
     if @form.save
-      redirect_to controller: 'posts', action: 'index', notice: 'タグを登録しました'
+      redirect_to root_path, notice: 'タグを登録しました'
     else
       render 'new'
     end
