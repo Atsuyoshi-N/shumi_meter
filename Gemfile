@@ -72,3 +72,6 @@ gem 'mini_magick'
 gem 'toastr-rails'
 
 gem 'jquery-rails'
+
+# devise views
+gem 'devise-bootstrap-views'
