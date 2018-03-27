@@ -1,6 +1,6 @@
-<%= render 'layouts/sidebar' %>
 <div class="row">
-  <div class="col-md-offset-2 col-md-10 main">
+  <%= render 'layouts/sidebar' %>
+  <div class="col-md-10 main">
     <div class="tag-columns">
       <div class="row">
         <% @data.each do |dd| %>
@@ -16,6 +16,7 @@
                       <% post.each do |t| %>
                         <div class="card-text">
                           <%= t["label"] %>
+                        </div>
                         <p class="card-text">
                           <% if t["datatype"] == "text_contents" then %>
                             <%= t["content"] %>
@@ -27,11 +28,11 @@
                             else
                           <% end %>
                         </p>
-                      </div>
-                    <% end %>
+                      <% end %>
+                    </div>
                   </div>
-                </div>
-              <% end %>
+                <% end %>
+              </div>
             </div>
           <% end %>
         <% end %>
