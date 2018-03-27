@@ -12,15 +12,15 @@
         <thead>
           <tr>
             <!-- <th>タグ</th> -->
-            <th>ラベル</th>
+            <th>フォームのタイトル</th>
             <!-- <th>順番</th> -->
-            <th>データ型</th>
+            <th>フォームの種類</th>
           </tr>
         </thead>
         <tbody class="bulk-registration-form" id="add-form-body">
           <%= fb.fields_for :tag_managements do |f| %>
             <tr class="item">
-              <%= f.hidden_field :user_id, value: User.find(1).id %>
+              <%= f.hidden_field :user_id, value: current_user.id %>
               <%= f.hidden_field :tag, value: "dummy dummy", id: "hidden-tag-field" %>
               <!--
               <td>
@@ -35,7 +35,7 @@
                 <%= f.text_field :order, class: 'form-control' %>
               </td> -->
               <td>
-                <%= f.text_field :datatype, class: 'form-control' %>
+                <%= f.select :datatype, [["一行だけのテキスト", "text_contents"], ["複数行にわたるテキスト", "textarea_contents"], ["日時", "date_contents"], ["画像", "image_contents"]] ,{}, { class: 'form-control' } %>
               </td>
             </tr>
           <% end %>
