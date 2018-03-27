@@ -42,12 +42,13 @@ class PostsController < ApplicationController
 
   private
   def set_post
-    @post = Post.find(1)  
+    @post = Post.find(1)
   end
 
   def set_tags
-    @tag_name = '映画'
+    @tag_name = params[:tag]
     @tags = TagManagement.where(tag: @tag_name).order(:order)
+    @user_having_tags = current_user.tag_managements.select(:tag).uniq{|i| i.tag}
   end
 
   def post_params
@@ -56,12 +57,12 @@ class PostsController < ApplicationController
 
   def formalize_post(all_posts, tag_name)
     tags = TagManagement.where(tag: tag_name, user_id: current_user).order(:order)
-    posts = []    
+    posts = []
     all_posts.each do |p|
       next if p.tag != tag_name
       data = []
-      tags.each do |t|  
-        if t.datatype == "text_contents" then 
+      tags.each do |t|
+        if t.datatype == "text_contents" then
           cont = TextContent.find_by(post_id: p.id, label: t.label)
           # binding.pry
           data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content})
@@ -71,8 +72,10 @@ class PostsController < ApplicationController
         elsif t.datatype == "date_contents" then
           cont = DateContent.find_by(post_id: p.id, label: t.label)
           data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content})
+        elsif t.datatype == "Image_contents" then
+          cont = ImageContent.find_by(post_id: p.id, label: t.label)
+          data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content})
         else
-          fail
         end
       end
       posts.push(data)

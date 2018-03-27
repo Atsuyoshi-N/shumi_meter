@@ -1,8 +1,13 @@
 <div class="col-md-2 sidebar">
   <div class="sidebar-sticky">
     <ul class="nav flex-column">
+      <li class="nav-item border-bottom"><%= link_to 'タグを登録する', new_tag_management_path, class: 'nav-link' %><li>
       <li class="nav-item">
-        <%= link_to '新規投稿画面', new_post_path, { :class=>"nav-link" } %>
+        <% if @user_having_tags.present? %>
+          <% @user_having_tags.each do | having_tag | %>
+            <%= link_to "#{having_tag.tag}", new_post_path(tag: having_tag.tag), { class: "nav-link" } %>
+          <% end %>
+        <% end %>
       </li>
     </ul>
   </div>
