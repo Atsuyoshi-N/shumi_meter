@@ -72,8 +72,11 @@ class PostsController < ApplicationController
         elsif t.datatype == "date_contents" then
           cont = DateContent.find_by(post_id: p.id, label: t.label)
           data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content})
-        elsif t.datatype == "Image_contents" then
+        elsif t.datatype == "image_contents" then
           cont = ImageContent.find_by(post_id: p.id, label: t.label)
+          data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content})
+        elsif t.datatype == "number_contents" then
+          cont = NumberContent.find_by(post_id: p.id, label: t.label)
           data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content})
         else
         end
