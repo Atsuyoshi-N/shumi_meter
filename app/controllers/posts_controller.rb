@@ -43,10 +43,6 @@ class PostsController < ApplicationController
   def destory
   end
 
-  def select_tag
-    @tags = current_user.tag_managements.select(:tag).uniq{|i| i.tag}
-  end
-
   private
   def set_post
     @post = Post.find(1)
