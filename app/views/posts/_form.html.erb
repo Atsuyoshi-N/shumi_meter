@@ -23,6 +23,11 @@
         <%= image_contents_form.file_field :content, label: t.label %>
         <%= image_contents_form.hidden_field :label,value: t.label %>
       <% end %>
+    <% elsif t.datatype == "number_contents" then %>
+      <%= f.fields_for :number_contents, post.number_contents.build do |number_contents_form| %>
+        <%= number_contents_form.number_field :content, label: t.label %>
+        <%= number_contents_form.hidden_field :label,value: t.label %>
+      <% end %>
     <% else %>
       else
     <% end %>

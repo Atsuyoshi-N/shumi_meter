@@ -35,7 +35,7 @@
                 <%= f.text_field :order, class: 'form-control' %>
               </td> -->
               <td>
-                <%= f.select :datatype, [["一行だけのテキスト", "text_contents"], ["複数行にわたるテキスト", "textarea_contents"], ["日時", "date_contents"], ["画像", "image_contents"]] ,{}, { class: 'form-control' } %>
+                <%= f.select :datatype, [["一行だけのテキスト", "text_contents"], ["複数行にわたるテキスト", "textarea_contents"], ["日時", "date_contents"], ["画像", "image_contents"], ["数字", "number_contents"]] ,{}, { class: 'form-control' } %>
               </td>
             </tr>
           <% end %>
