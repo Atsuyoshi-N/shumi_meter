@@ -43,9 +43,14 @@ class PostsController < ApplicationController
   def destory
   end
 
+  def select_tag
+    @tags = current_user.tag_managements
+    binding.pry
+  end
+
   private
   def set_post
-    @post = Post.find(1)  
+    @post = Post.find(1)
   end
 
   def set_tags
@@ -59,12 +64,12 @@ class PostsController < ApplicationController
 
   def formalize_post(all_posts, tag_name)
     tags = TagManagement.where(tag: tag_name, user_id: current_user).order(:order)
-    posts = []    
+    posts = []
     all_posts.each do |p|
       next if p.tag != tag_name
       data = []
-      tags.each do |t|  
-        if t.datatype == "text_contents" then 
+      tags.each do |t|
+        if t.datatype == "text_contents" then
           cont = TextContent.find_by(post_id: p.id, label: t.label)
           # binding.pry
           data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content})
