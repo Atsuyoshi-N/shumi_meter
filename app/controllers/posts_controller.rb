@@ -53,7 +53,7 @@ class PostsController < ApplicationController
   end
 
   def set_tags
-    @tag_name = '映画'
+    @tag_name = params[:tag]
     @tags = TagManagement.where(tag: @tag_name).order(:order)
     @user_having_tags = current_user.tag_managements.select(:tag).uniq{|i| i.tag}
   end
@@ -79,8 +79,10 @@ class PostsController < ApplicationController
         elsif t.datatype == "date_contents" then
           cont = DateContent.find_by(post_id: p.id, label: t.label)
           data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content})
+        elsif t.datatype == "Image_contents" then
+          cont = ImageContent.find_by(post_id: p.id, label: t.label)
+          data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content})
         else
-          fail
         end
       end
       posts.push(data)
