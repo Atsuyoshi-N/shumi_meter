@@ -1,5 +1,5 @@
 class Form::TagManagementCollection < Form::Base
-  DEFAULT_ITEM_COUNT = 5
+  DEFAULT_ITEM_COUNT = 1
   attr_accessor :tag_managements
 
   def initialize(attributes = {})
@@ -25,6 +25,7 @@ class Form::TagManagementCollection < Form::Base
   end
 
   def target_tag_managements
-    self.tag_managements.select{ |v| value_to_boolean(v.register) }
+    self.tag_managements
+    # self.tag_managements.select{ |v| value_to_boolean(v.register) }
   end
 end

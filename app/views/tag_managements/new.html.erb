@@ -1,21 +1,29 @@
+
+
 <%= form_for(@form, url: tag_managements_path, method: :post) do |fb| %>
   <table class="table">
+    <% if not (@form.tag_managements.select { |v| v.errors.any? }).empty? %>
+      <div class="alert alert-warning text-center">
+        <strong> 空欄があります </strong>
+      </div>
+    <% end %>
     <thead>
       <tr>
-        <th width="60px"> 登録</th>
+        <!-- <th width="60px">登録</th> -->
         <th>タグ</th>
         <th>ラベル</th>
         <th>順番</th>
         <th>データ型</th>
       </tr>
     </thead>
-    <tbody class="bulk-registration-form">
+    <tbody class="bulk-registration-form" id="add-form-body">
       <%= fb.fields_for :tag_managements do |f| %>
         <tr class="item">
+          <!--
           <td class="text-center">
             <%= f.check_box :register, class: 'top10 registration-checkbox' %>
-          </td>
-          <%= f.hidden_field :user_id, value: User.find(1).id %>
+          </td> -->
+            <%= f.hidden_field :user_id, value: User.find(1).id %>
           <td>
             <%= f.text_field :tag, class: 'form-control' %>
           </td>
@@ -30,8 +38,10 @@
           </td>
         </tr>
       <% end %>
+      <div id="additional-tag-form"></div>
     </tbody>
   </table>
+    <div class="btn btn-primary" id="addbtn">追加</div>
   <div class="text-center">
     <%= fb.submit '一括登録', class: 'btn btn-primary' %>
   </div>
