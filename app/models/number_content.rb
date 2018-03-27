@@ -1,0 +1,2 @@
+class NumberContent < ApplicationRecord
+end
