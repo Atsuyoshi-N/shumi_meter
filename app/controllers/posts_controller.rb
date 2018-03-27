@@ -44,8 +44,7 @@ class PostsController < ApplicationController
   end
 
   def select_tag
-    @tags = current_user.tag_managements
-    binding.pry
+    @tags = current_user.tag_managements.select(:tag).uniq{|i| i.tag}
   end
 
   private
