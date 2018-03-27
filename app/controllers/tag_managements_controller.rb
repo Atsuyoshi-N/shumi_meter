@@ -2,6 +2,7 @@ class TagManagementsController < ApplicationController
   def new
     @form = Form::TagManagementCollection.new
     @user_having_tags = current_user.tag_managements.select(:tag).uniq{|i| i.tag}
+    @tag_name = ''
   end
 
   def create
