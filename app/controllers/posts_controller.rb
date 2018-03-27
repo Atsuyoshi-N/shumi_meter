@@ -8,10 +8,7 @@ class PostsController < ApplicationController
     @tag = TagManagement.where(tag: @post.tag).order(:order)
     # 下の記述は画像が表示されるかの確認のために一時的に追加した。
     # @image = Post.find(8)
-    @all_tags = Set.new
-    current_user.tag_managements.each do |x|
-      @all_tags.add(x.tag)
-    end
+    @all_tags = get_all_tags
     @data = formalize_posts(Post.all)
   end
 
@@ -89,6 +86,14 @@ class PostsController < ApplicationController
       datas.push(formalize_post(all_posts, tag))
     end
     return datas
+  end
+
+  def get_all_tags
+    all_tags = Set.new
+    current_user.tag_managements.each do |x|
+      all_tags.add(x.tag)
+    end
+    return all_tags
   end
 end
 
