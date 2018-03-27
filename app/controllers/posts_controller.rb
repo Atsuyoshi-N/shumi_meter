@@ -55,6 +55,7 @@ class PostsController < ApplicationController
   def set_tags
     @tag_name = '映画'
     @tags = TagManagement.where(tag: @tag_name).order(:order)
+    @user_having_tags = current_user.tag_managements.select(:tag).uniq{|i| i.tag}
   end
 
   def post_params
