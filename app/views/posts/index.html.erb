@@ -4,7 +4,7 @@
     <div class="tag-columns">
       <div class="row">
         <% @data.each do |dd| %>
-          <%if dd["post_list"].length != 0 %>
+          <% if dd["post_list"].length != 0 %>
             <div class="col-3 tag-column-box">
               <div class="tag-column-box-header">
                 <%= dd["tag_name"] %>

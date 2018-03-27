@@ -3,6 +3,11 @@
   <div class="col-md-10 main">
     <%= form_for(@form, url: tag_managements_path, method: :post) do |fb| %>
       <table class="table">
+        <% if not (@form.tag_managements.select { |v| v.errors.any? }).empty? %>
+          <div class="alert alert-warning text-center">
+            <strong> 空欄があります </strong>
+          </div>
+        <% end %>
         <thead>
           <tr>
             <th width="60px"> 登録</th>
@@ -35,6 +40,7 @@
           <% end %>
         </tbody>
       </table>
+      <div class="btn btn-primary" id="addbtn">追加</div>
       <div class="text-center">
         <%= fb.submit '一括登録', class: 'btn btn-primary' %>
       </div>
