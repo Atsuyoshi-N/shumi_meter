@@ -28,6 +28,11 @@
         <%= number_contents_form.number_field :content, label: t.label %>
         <%= number_contents_form.hidden_field :label,value: t.label %>
       <% end %>
+    <% elsif t.datatype == "link_contents" then %>
+      <%= f.fields_for :link_contents, post.link_contents.build do |link_contents_form| %>
+        <%= link_contents_form.number_field :content, label: t.label %>
+        <%= link_contents_form.hidden_field :label,value: t.label %>
+      <% end %>
     <% else %>
       else
     <% end %>
