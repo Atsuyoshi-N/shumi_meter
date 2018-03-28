@@ -138,14 +138,12 @@ body {
     display: inline-block; // vertical-align: top;
     float: none;
     padding: 1px;
-    // border: 1px solid red;
-    // height: calc(100vh - 48px);
+    white-space: normal;
     height: 100%;
     overflow: hidden;
 }
 
 .tag-columns .tag-column-box .tag-column-box-header {
-    // overflow-y: scroll;
     font-size: 1.5rem;
     height: 2.5rem;
     border: 1px solid black;

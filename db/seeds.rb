@@ -54,6 +54,12 @@ DateContent.create!(
                         content:    DateTime.new(2009, 12, 10)
 )
 
+TextareaContent.create!(
+                        post_id:    1,
+                        label:      'コメント',
+                        content:    'よかった。'
+)
+
 TagManagement.create!(
                         user_id:     1,
                         tag:         'music',
@@ -70,8 +76,146 @@ TagManagement.create!(
                         datatype:    'text_contents'
 )
 
-TextareaContent.create!(
-                        post_id:    1,
-                        label:      'コメント',
-                        content:    'よかった。'
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         'music',
+                        label:       'ジャケット',
+                        order:       '3',
+                        datatype:    'image_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         '本',
+                        label:       'タイトル',
+                        order:       '1',
+                        datatype:    'text_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         '本',
+                        label:       '著者',
+                        order:       '2',
+                        datatype:    'text_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         '本',
+                        label:       '感想',
+                        order:       '3',
+                        datatype:    'textarea_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         '本',
+                        label:       '読了日',
+                        order:       '4',
+                        datatype:    'date_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         '本',
+                        label:       '表紙',
+                        order:       '5',
+                        datatype:    'image_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         'youtube',
+                        label:       '動画名',
+                        order:       '1',
+                        datatype:    'text_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         'youtube',
+                        label:       '投稿者',
+                        order:       '2',
+                        datatype:    'text_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         'youtube',
+                        label:       'URL',
+                        order:       '3',
+                        datatype:    'link_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         'youtube',
+                        label:       'コメント',
+                        order:       '4',
+                        datatype:    'textarea_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         'ラーメン',
+                        label:       '店名',
+                        order:       '1',
+                        datatype:    'text_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         'ラーメン',
+                        label:       'メニュー',
+                        order:       '2',
+                        datatype:    'text_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         'ラーメン',
+                        label:       '写真',
+                        order:       '3',
+                        datatype:    'image_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         'ラーメン',
+                        label:       'コメント',
+                        order:       '4',
+                        datatype:    'textarea_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         'コスメ',
+                        label:       '名前',
+                        order:       '2',
+                        datatype:    'text_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         'コスメ',
+                        label:       'カテゴリ',
+                        order:       '2',
+                        datatype:    'text_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         'コスメ',
+                        label:       '写真',
+                        order:       '3',
+                        datatype:    'image_contents'
+)
+
+TagManagement.create!(
+                        user_id:     1,
+                        tag:         'コスメ',
+                        label:       'コメント',
+                        order:       '4',
+                        datatype:    'textare_contents'
 )
