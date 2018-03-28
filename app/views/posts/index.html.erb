@@ -24,10 +24,11 @@
                             <%= t["content"] %>
                           <% elsif t["datatype"] == "date_contents" then %>
                             <%= t["content"] %>
+                          <% elsif t["datatype"] == "number_contents" then %>
+                            <%= t["content"] %>
                           <% elsif t["datatype"] == "image_contents" then %>
                             <%= image_tag(t["content"].thumb) %>
                           <% else %>
-                            else
                           <% end %>
                         </p>
                       <% end %>
