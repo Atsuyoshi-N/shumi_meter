@@ -65,19 +65,19 @@ class PostsController < ApplicationController
         if t.datatype == "text_contents" then
           cont = TextContent.find_by(post_id: p.id, label: t.label)
           # binding.pry
-          data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content})
+          data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content}) 
         elsif t.datatype == "textarea_contents" then
           cont = TextareaContent.find_by(post_id: p.id, label: t.label)
-          data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content})
+          data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content}) 
         elsif t.datatype == "date_contents" then
           cont = DateContent.find_by(post_id: p.id, label: t.label)
-          data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content})
+          data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content}) 
         elsif t.datatype == "image_contents" then
           cont = ImageContent.find_by(post_id: p.id, label: t.label)
-          data.push({"datatype" => "image_contents", "label" => cont.label, "content" => cont.content})
+          data.push({"datatype" => "image_contents", "label" => cont.label, "content" => cont.content}) 
         elsif t.datatype == "number_contents" then
           cont = NumberContent.find_by(post_id: p.id, label: t.label)
-          data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content})
+          data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content}) 
         else
         end
       end

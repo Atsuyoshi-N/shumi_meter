@@ -11,29 +11,33 @@
               </div>
               <div class="tag-column-box-body">
                 <% dd["post_list"].each do |post| %>
-                  <div class="card border-dark">
-                    <div class="card-body">
-                      <% post.each do |t| %>
-                        <div class="card-text">
-                          <%= t["label"] %>
-                        </div>
-                        <p class="card-text">
-                          <% if t["datatype"] == "text_contents" then %>
-                            <%= t["content"] %>
-                          <% elsif t["datatype"] == "textarea_contents" then %>
-                            <%= t["content"] %>
-                          <% elsif t["datatype"] == "date_contents" then %>
-                            <%= t["content"] %>
-                          <% elsif t["datatype"] == "number_contents" then %>
-                            <%= t["content"] %>
-                          <% elsif t["datatype"] == "image_contents" then %>
-                            <%= image_tag(t["content"].thumb) %>
-                          <% else %>
+                  <% if post.select{|i| not i["content"].blank?}.length != 0 %>
+                    <div class="card border-dark">
+                      <div class="card-body">
+                        <% post.each do |t| %>
+                          <% if not t["content"].blank?  %>
+                            <div class="card-text">
+                              <%= t["label"] %>
+                            </div>
+                            <p class="card-text">
+                              <% if t["datatype"] == "text_contents" then %>
+                                <%= t["content"] %>
+                              <% elsif t["datatype"] == "textarea_contents" then %>
+                                <%= t["content"] %>
+                              <% elsif t["datatype"] == "date_contents" then %>
+                                <%= t["content"] %>
+                              <% elsif t["datatype"] == "number_contents" then %>
+                                <%= t["content"] %>
+                              <% elsif t["datatype"] == "image_contents" then %>
+                                <%= image_tag(t["content"].thumb) %>
+                              <% else %>
+                              <% end %>
+                            </p>
                           <% end %>
-                        </p>
-                      <% end %>
+                        <% end %>
+                      </div>
                     </div>
-                  </div>
+                  <% end %>
                 <% end %>
               </div>
             </div>
