@@ -1,6 +1,6 @@
 <div class="row">
   <%= render 'layouts/sidebar' %>
-  <div class="col-md-10 main">
+  <div class="col-md-10 main" style="padding: 0 0 0 0;">
     <div class="tag-columns">
       <div class="row">
         <% @data.each do |dd| %>
@@ -12,14 +12,17 @@
               <div class="tag-column-box-body">
                 <% dd["post_list"].each do |post| %>
                   <% if post.select{|i| not i["content"].blank?}.length != 0 %>
-                    <div class="card border-dark">
-                      <div class="card-body">
+                    <div class="card border-dark .bs">
+                      <div class="card-body" style="padding-top: 3px;">
+                      <ul class="list-group list-group-flush">
                         <% post.each do |t| %>
                           <% if not t["content"].blank?  %>
+                          <li class="list-group-item">
                             <div class="card-text">
+                            <div class="form-label">
                               <%= t["label"] %>
+                            </div>  
                             </div>
-                            <p class="card-text">
                               <% if t["datatype"] == "text_contents" then %>
                                 <%= t["content"] %>
                               <% elsif t["datatype"] == "textarea_contents" then %>
@@ -34,9 +37,10 @@
                                 <%= link_to 'リンク', t["content"], target: "_blank" %>
                               <% else %>
                               <% end %>
-                            </p>
+                            </li>
                           <% end %>
                         <% end %>
+                      </ul>
                       </div>
                     </div>
                   <% end %>

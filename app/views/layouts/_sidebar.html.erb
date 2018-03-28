@@ -6,7 +6,7 @@
         <% if @user_having_tags.present? %>
           <% @user_having_tags.each do | having_tag | %>
             <% if having_tag.tag == @tag_name %>
-              <%= link_to "#{having_tag.tag}", new_post_path(tag: having_tag.tag), { class: "nav-link list-group-item-danger" } %>
+              <%= link_to "#{having_tag.tag}", new_post_path(tag: having_tag.tag), { class: "nav-link list-group-item-success" } %>
             <% else %>
               <%= link_to "#{having_tag.tag}", new_post_path(tag: having_tag.tag), { class: "nav-link" } %>
             <% end %>

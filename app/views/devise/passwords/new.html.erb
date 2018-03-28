@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="container col-md-4">
+  <div class="container col-md-4" style="margin-top: 20px;">
     <%= bootstrap_devise_error_messages! %>
       <div class="card devise-bs">
         <div class="card-header">
@@ -12,7 +12,7 @@
               <%= f.email_field :email, autofocus: true, class: 'form-control' %>
             </div>
     
-            <%= f.submit t('.send_me_reset_password_instructions', default: 'Send me reset password instructions'), class: 'btn btn-primary' %>
+            <%= f.submit t('.send_me_reset_password_instructions', default: 'Send me reset password instructions'), class: 'btn btn-success' %>
           <% end %>
         </div>
       </div>

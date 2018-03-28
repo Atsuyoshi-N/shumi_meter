@@ -5,7 +5,8 @@ class PostsController < ApplicationController
   before_action :set_tags, only: [:new, :create, :edit, :update, :index]
 
   def index
-    @tag = TagManagement.where(tag: @post.tag).order(:order)
+    post_tag = @post.nil? ? "" : @post.tag
+    @tag = TagManagement.where(tag: post_tag).order(:order)
     # 下の記述は画像が表示されるかの確認のために一時的に追加した。
     # @image = Post.find(8)
     @all_tags = get_all_tags
@@ -42,7 +43,7 @@ class PostsController < ApplicationController
 
   private
   def set_post
-    @post = Post.find(1)
+    # @post = Post.find(1)
   end
 
   def set_tags

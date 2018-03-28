@@ -20,12 +20,12 @@
           <% end %>
     </script>
   <% end %>
-  <nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0">
+  <nav class="navbar sticky-top flex-md-nowrap p-0" style="margin-bottom: 0px; background-color: rgb(86, 187, 55);">
     <!-- <a class="navbar-brand col-sm-3 col-md-2 mr-0" href="#">趣味メーター</a> -->
     <%= link_to '趣味メーター', root_path, { :class=>"navbar-brand col-sm-3 col-md-2 mr-0" } %>
-    <input class="form-control form-control-dark w-100" type="text" placeholder="Search" aria-label="Search">
-    <ul class="navbar-nav px-3">
-      <li class="nav-item text-nowrap">
+    <div class="w-100" style="boder: no;"></div>
+    <ul class="navbar-nav px-3" >
+      <li class="nav-item text-nowrap" >
         <% if user_signed_in? %>
           <%= link_to 'Sign out', destroy_user_session_path, method: :delete, class: 'nav-link' %>
         <% else %>
@@ -34,7 +34,7 @@
       </li>
     </ul>
   </nav>
-  <div class="container-fluid" style="overflow-y:hidden;">
+  <div class="container-fluid" style="overflow-y:hidden; margin-top:0px;">
     <%= yield %>
   </div>
 </body>
