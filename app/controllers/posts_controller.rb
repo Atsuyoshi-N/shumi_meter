@@ -78,6 +78,9 @@ class PostsController < ApplicationController
         elsif t.datatype == "number_contents" then
           cont = NumberContent.find_by(post_id: p.id, label: t.label)
           data.push({"datatype" => "text_contents", "label" => cont.label, "content" => cont.content})
+        elsif t.datatype == "link_contents" then
+          cont = LinkContent.find_by(post_id: p.id, label: t.label)
+          data.push({"datatype" => "link_contents", "label" => cont.label, "content" => cont.content})
         else
         end
       end

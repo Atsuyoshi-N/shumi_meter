@@ -30,6 +30,8 @@
                                 <%= t["content"] %>
                               <% elsif t["datatype"] == "image_contents" then %>
                                 <%= image_tag(t["content"].thumb) %>
+                              <% elsif t["datatype"] == "link_contents" then %>
+                                <%= link_to 'リンク', t["content"], target: "_blank" %>
                               <% else %>
                               <% end %>
                             </p>
