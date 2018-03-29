@@ -21,7 +21,7 @@
                             <div class="card-text">
                             <div class="form-label">
                               <%= t["label"] %>
-                            </div>  
+                            </div>
                             </div>
                               <% if t["datatype"] == "text_contents" then %>
                                 <%= t["content"] %>
@@ -32,7 +32,9 @@
                               <% elsif t["datatype"] == "number_contents" then %>
                                 <%= t["content"] %>
                               <% elsif t["datatype"] == "image_contents" then %>
-                                <%= image_tag(t["content"].thumb) %>
+                                <% if t["content"].thumb.present? %>
+                                  <%= image_tag(t["content"].thumb) %>
+                                <% end %>
                               <% elsif t["datatype"] == "link_contents" then %>
                                 <%= link_to 'リンク', t["content"], target: "_blank" %>
                               <% else %>
