@@ -84,3 +84,4 @@ gem 'jquery-rails'
 
 # devise views
 gem 'devise-bootstrap-views'
+gem 'nokogiri'
