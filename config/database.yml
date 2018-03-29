@@ -50,5 +50,6 @@ test:
 production:
   <<: *default
   database: hobby_management_production
-  username: hobby_management
-  password: <%= ENV['HOBBY_MANAGEMENT_DATABASE_PASSWORD'] %>
+  username: root
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  socket: /var/lib/mysql/mysql.sock
