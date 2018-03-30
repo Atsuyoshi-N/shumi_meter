@@ -36,7 +36,11 @@
                                   <%= image_tag(t["content"].thumb) %>
                                 <% end %>
                               <% elsif t["datatype"] == "link_contents" then %>
-                                <%= link_to 'リンク', t["content"], target: "_blank" %>
+                                <% if t["content"].include?("javascript:") %>
+                                  <p> URLに危険な値が含まれています。</p>
+                                <% else %>
+                                  <%= link_to 'リンク', t["content"], target: "_blank" %>
+                                <% end %>
                               <% else %>
                               <% end %>
                             </li>
