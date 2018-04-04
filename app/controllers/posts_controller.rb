@@ -48,7 +48,7 @@ class PostsController < ApplicationController
 
   def set_tags
     @tag_name = params[:tag]
-    @tags = TagManagement.where(tag: @tag_name).order(:order)
+    @tags = current_user.tag_managements.where(tag: @tag_name).order(:order)
     @user_having_tags = current_user.tag_managements.select(:tag).uniq{|i| i.tag}
   end
 
